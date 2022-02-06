@@ -22,22 +22,80 @@ function play(playerSelection,computerSelection)
     computerSelection=computerPlay();
     let compSelection=computerSelection;
     console.log(computerSelection);
-    if (compSelection === "rock" && player === "paper" || player==="rock" && compSelection==="scissors" || player==="scissors" && compSelection ==="paper"){
-        console.log("You win! ", player ," beats ", compSelection)
-        }
-    else if(compSelection === "rock" && player === "rock" || compSelection==="scissors" && player==="scissors" || compSelection==="paper" && player==="paper"){
-    console.log("Draw!")
+    let status="";
+   
+    let winMatch="You win !"
+    let loseMatch="You lose"
+    let drawGame="Draw!"
+    
+    if (compSelection === "rock" && player === "paper" || player==="rock" && compSelection==="scissors" || player==="scissors" && compSelection ==="paper")
+    {
+        status="Winner"; 
+        console.log (player,"beats ",computerSelection);
+     }
+    else if(compSelection === "rock" && player === "rock" || compSelection==="scissors" && player==="scissors" || compSelection==="paper" && player==="paper")
+    {
+        status="Draw";
+        console.log (status);
+        
     }
-    else if (compSelection === "rock" && player === "scissors" || compSelection==="scissors" && player==="paper" || compSelection==="paper" && player==="rock"){
-    console.log("You lose ", compSelection, " beats ", player)
+    else if (compSelection === "rock" && player === "scissors" || compSelection==="scissors" && player==="paper" || compSelection==="paper" && player==="rock")
+    {
+        status="Loser"
+        console.log(compSelection, " beats ", player)
+    
+        
     }
+        return status
+  
+     
 }
 
 /*Game function*/
-function game(start)
-{ start=1;
-    for (start=1;start<=5;start++){
-    play();
-    }
 
+function game(start,trial)
+{ start=1;
+    let yourScore=0;
+    let compScore=0;
+    /*play("rock");*/
+   
+    
+    for (start=1;start<=5;start++)
+    {
+        pstatus=play("rock");
+
+        if(pstatus==="Winner")
+        {
+        yourScore+=1
+        console.log("Your score is ,",yourScore, "Computer score is", compScore);
+        }
+
+        else if(pstatus==="Loser")
+        {
+        compScore+=1
+        console.log("Your score is ",yourScore, ", Computer score is ",compScore,);
+        }
+
+        else if(pstatus==="Draw")
+        {
+        yourScore=yourScore;
+        compScore=compScore;
+        console.log("Your score is ",yourScore,", Computer score is ",compScore);
+        }
+
+    }
+    if (yourScore>compScore){
+        console.log("You are the victor");
+    }
+    else if(yourScore==compScore){
+        console.log ("Tie!")
+    }
+    else if(yourScore<compScore)
+    {
+        console.log("Computer is the victor!")
+    }
+   
 }
+
+
+   
