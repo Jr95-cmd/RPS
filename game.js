@@ -1,5 +1,3 @@
-console.log("hello world!")
-
 /*this function is based on an array of three parameters, using 
  the floor method from the math class to retrieve a number less than or equal to another number 
  which was selected based on the random method of the math class based on a number between 1 and 0 normally
@@ -16,9 +14,9 @@ let val = ["rock","paper","scissors"]
 /*function to to play the rock paper scissors game*/
 function play(playerSelection,computerSelection)
 {
-    
-    let player = playerSelection.toLowerCase();
-    console.log(player);  
+    let userMove = prompt("Select your move: rock,paper,or scissors","You must make a mvoe")
+    playerSelection = userMove.toLowerCase();
+    console.log(playerSelection);  
     computerSelection=computerPlay();
     let compSelection=computerSelection;
     console.log(computerSelection);
@@ -28,28 +26,26 @@ function play(playerSelection,computerSelection)
     let loseMatch="You lose"
     let drawGame="Draw!"
     
-    if (compSelection === "rock" && player === "paper" || player==="rock" && compSelection==="scissors" || player==="scissors" && compSelection ==="paper")
+    if (compSelection === "rock" && playerSelection === "paper" || playerSelection==="rock" && compSelection==="scissors" || playerSelection==="scissors" && compSelection ==="paper")
     {
         status="Winner"; 
-        console.log (player,"beats ",computerSelection);
+        console.log (playerSelection,"beats ",computerSelection);
      }
-    else if(compSelection === "rock" && player === "rock" || compSelection==="scissors" && player==="scissors" || compSelection==="paper" && player==="paper")
+    else if(compSelection === "rock" && playerSelection === "rock" || compSelection==="scissors" && playerSelection==="scissors" || compSelection==="paper" && playerSelection==="paper")
     {
         status="Draw";
         console.log (status);
         
     }
-    else if (compSelection === "rock" && player === "scissors" || compSelection==="scissors" && player==="paper" || compSelection==="paper" && player==="rock")
+    else if (compSelection === "rock" && playerSelection === "scissors" || compSelection==="scissors" && playerSelection==="paper" || compSelection==="paper" && playerSelection==="rock")
     {
         status="Loser"
-        console.log(compSelection, " beats ", player)
-    
-        
+        console.log(compSelection, " beats ", playerSelection)
+       
     }
         return status
-  
-     
 }
+  
 
 /*Game function*/
 
@@ -57,12 +53,9 @@ function game(start,trial)
 { start=1;
     let yourScore=0;
     let compScore=0;
-    /*play("rock");*/
-   
-    
     for (start=1;start<=5;start++)
     {
-        pstatus=play("rock");
+        pstatus=play();
 
         if(pstatus==="Winner")
         {
