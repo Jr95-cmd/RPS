@@ -1,14 +1,44 @@
 <!DOCTYPE html>
-<html>
 <html lang="en-us">
-<head>
-    <meta charset ="UTF-8">
-    <title>Rock Paper Scissors</title> 
-    <script src="game.js">    
-    </script>
-</head>
+    <head>
+        <meta charset ="utf-8">
+        <title>Rock Paper Scissors</title> 
+        <link rel="shortcut icon" href="images/icon.ico" alt="rock paper scissors icon">
+        <link rel="stylesheet" href="styles.css">
+        <script src="game.js" defer>    
+         </script>
+    </head>
     
-<body>
+    <body>
+        <div id="heading">
+            <H1>Rock! Paper! Scissors! Who will be the victor?</H1>
+            <img id="logo" src="images/joystick.png" alt="controller">
+        </div>
+        <div id="container">
+            <div class="rock">
+                <img id="btnR" src="images/stone.png" alt="rock image">
+            </div>
+            <div class="paper">
+                <img id="btnP" src="images/document.png" alt="paper image">
+            </div>
+            <div class="scissors">
+                <img id="btnS" src="images/scissors.png" alt="scissors image">
+            </div>
+            
+        </div> 
+        <div id="Results">
+            <div id="userScore">
+                <p>Player</p>
+                <p id ="user">0</p>
+            </div>  
+            <div id="computerScore">
+            <p>Computer</p>
+            <p id="computer">0</p>
+            </div>
+        </div>  
+        <footer id="heading">
+            <h1>Thank you for playing!</h1>
+        </footer>     
     
-</body>
-</html>
+    </body>
+    </html>

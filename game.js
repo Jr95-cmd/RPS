@@ -11,11 +11,34 @@ let val = ["rock","paper","scissors"]
     return compMove;
 }
 
+//function to check if game has ended
+
+function endGame()
+{
+    const uElement=document.getElementById("user");
+    const cElement=document.getElementById("computer");
+    
+    if (uElement.textContent==5||cElement.textContent==5){
+        if(uElement.textContent>cElement.textContent){
+            alert("game over you win, your score: "+yourScore + " computer score: " + compScore);
+        }
+        else{
+            alert("game over you lose, your score: "+ yourScore + " computer score: " + compScore);
+        }
+        //reload  page after game ends 
+        location.reload(); 
+    }
+    
+}
+
+// score variable should be defined outisde of function in order to be update accordingly
+let yourScore=0;
+let compScore=0;
 /*function to to play the rock paper scissors game*/
 function play(playerSelection,computerSelection)
 {
-    let userMove = prompt("Select your move: rock,paper,or scissors","You must make a mvoe")
-    playerSelection = userMove.toLowerCase();
+    //let userMove = prompt("Select your move: rock,paper,or scissors","You must make a mvoe")
+    playerSelection = playerSelection.toLowerCase();
     console.log(playerSelection);  
     computerSelection=computerPlay();
     let compSelection=computerSelection;
@@ -26,30 +49,47 @@ function play(playerSelection,computerSelection)
     let loseMatch="You lose"
     let drawGame="Draw!"
     
+    
     if (compSelection === "rock" && playerSelection === "paper" || playerSelection==="rock" && compSelection==="scissors" || playerSelection==="scissors" && compSelection ==="paper")
     {
-        status="Winner"; 
-        console.log (playerSelection,"beats ",computerSelection);
-     }
+        yourScore+=1;
+        const uScore = document.querySelector('#userScore')
+        const pScore= document.querySelector('#user');
+        pScore.textContent=yourScore;
+        uScore.appendChild(pScore);
+        status="Winner!"; 
+        window.alert(playerSelection+" beats "+computerSelection+", "+status);
+        
+        
+    }
     else if(compSelection === "rock" && playerSelection === "rock" || compSelection==="scissors" && playerSelection==="scissors" || compSelection==="paper" && playerSelection==="paper")
     {
-        status="Draw";
-        console.log (status);
+        yourScore=yourScore;
+        compScore=compScore;
+        status="Draw, No winner!";
+        window.alert(status);
         
     }
     else if (compSelection === "rock" && playerSelection === "scissors" || compSelection==="scissors" && playerSelection==="paper" || compSelection==="paper" && playerSelection==="rock")
     {
-        status="Loser"
-        console.log(compSelection, " beats ", playerSelection)
-       
+        compScore+=1;
+        const com = document.querySelector('#computerScore')
+        const comScore= document.querySelector('#computer');
+        comScore.textContent=compScore;
+        com.appendChild(comScore);
+        status="Loser!"
+        window.alert(compSelection+" beats "+playerSelection+", "+status);
+        
+        
     }
-        return status
+
+    setTimeout(endGame,250);
 }
   
 
 /*Game function*/
 
-function game(start,trial)
+/*function game(start,trial)
 { start=1;
     let yourScore=0;
     let compScore=0;
@@ -88,7 +128,36 @@ function game(start,trial)
         console.log("Computer is the victor!")
     }
    
-}
+}*/
+
+const btn= document.querySelector('#btnR');
+btn.addEventListener('click', () => {
+    play("rock");
+      
+});
+
+const btnP= document.querySelector('#btnP');
+btnP.addEventListener('click', () => {
+    play("paper");
+    
+    
+});
+
+const btnS= document.querySelector('#btnS');
+btnS.addEventListener('click', () => {
+    play("scissors");
+    
+});
+
+//disabling image drage effect
+document.getElementById('logo').setAttribute('draggable',false);
+document.getElementById('btnS').setAttribute('draggable',false);
+document.getElementById('btnP').setAttribute('draggable',false);
+document.getElementById('btnR').setAttribute('draggable',false);
+
+
+
+
 
 
    
